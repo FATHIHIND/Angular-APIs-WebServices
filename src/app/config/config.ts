@@ -1,7 +1,7 @@
 import { Contact } from '../models/contact.model';
 
-export class Contact {
-    public static get FAKE_LIST_CONTACT() {
+export class Config {
+  /*  public static get FAKE_LIST_CONTACT() {
         return [new Contact(
             {
                 id: 1,
@@ -11,5 +11,8 @@ export class Contact {
                 favoris: true
             }
         )];
+    }*/
+    public static get SERVER_URL() {
+        return 'http://localhost/api/';
     }
 }

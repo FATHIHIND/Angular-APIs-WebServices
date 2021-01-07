@@ -1,5 +1,5 @@
 import { ContactService } from './services/contact.service';
-import { Contact } from './config/config';
+import { Contact } from './models/contact.model';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -10,9 +10,21 @@ import { Component, OnInit } from '@angular/core';
 export class AppComponent implements OnInit{
   listeContact: Contact[];
 
-  constructor(private service: ContactService){
-    ngOnInit(){
-      this.listeContact = this.service.getListContact();
+  constructor(private service: ContactService) {}
+  
+    ngOnInit() {
+     this.initialize();
     }
-  }
+    
+    initialize() {
+      this.service.getListContact().subscribe(
+        items  => {
+           this.listeContact = items;
+        },
+        error =>{
+          console.log('une erreur est survenue');
+        }
+      );
+    }
 }
+ 
